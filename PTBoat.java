@@ -1,4 +1,4 @@
 
-public class PTBoat {
+public class PTBoat extends Ships {
 
 }

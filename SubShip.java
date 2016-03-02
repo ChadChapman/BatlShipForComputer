@@ -1,4 +1,4 @@
 
-public class SubShip {
+public class SubShip extends Ships {
 
 }

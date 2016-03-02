@@ -1,4 +1,4 @@
 
-public class Destroyer {
+public class Destroyer extends Ships {
 
 }

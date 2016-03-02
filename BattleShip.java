@@ -1,8 +1,10 @@
 
 public class BattleShip extends Ships {
-public BattleShip(){
+	public BattleShip() {
 
-}
-this.shipSize = 4;
+	}
+	{
+		//this.shipSize=4;
+	}
 
 }

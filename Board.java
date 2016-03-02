@@ -3,29 +3,14 @@ public class Board extends Game {
 public Board(){
 	
 }
-
+/*
+ * not so sure we even need this class anymore but we can wait and see if it would be easier to take some things out
+ * of the Game super class and put them in here
+ */
 int shipCount = 5;
 int placementCounter = 0;
 
 public void setShip(Ships anyShip){
-	int placeSize = anyShip.shipSize;
-	Random randGen1 = new Random();
-	switch (placeSize):
-		case: 2 {
-			int anchorColumn = randGen1.nextInt(8);
-			int anchorRow = randGen1.nextInt(8);
-			int secondRow = anchorRow + 1;
-			anyShip.setPosArray(0, anchorColumn);
-			anyShip.setPosArray(1, anchorRow);
-			anyShip.setPosArray(2, anchorColumn);
-			anyShip.setPosArray(3, secondRow);
-			break;
-		}
-		case: 3 {
-			
-		}
-		case: 4{
-			
-		}
+	//lets make the user set the ships and avoid any messy algos
 }
 }
