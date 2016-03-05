@@ -102,6 +102,12 @@ public class Player extends Game {
 		int xCoord = shotArray[0];
 		int yCoord = shotArray[1];
 		for (Ships s : shipsFloatingList) {
+			if (s.checkShot(int[] shotArray)==true){	//This is what I was trying to explain
+				isAHit = true;				//the other day. You get polymorphism and
+			}						//simpler code. -Brent
+		}
+		return isAHit;	
+			
 			Integer[] shipCoords = s.getPosArray();
 			int lenf = shipCoords.length;
 			int coordsChecked = 0;
