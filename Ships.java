@@ -4,7 +4,7 @@ abstract public class Ships extends Game {
 
 	}
 
-	private Integer[] positionArray;
+	private Integer[][] positionArray;
 	protected int shipSize;
 	private boolean isSunk = false;
 	private int hitCount = 0;
@@ -26,6 +26,22 @@ abstract public class Ships extends Game {
 	
 	public Integer[] getPosArray(){
 		return positionArray;
+	}
+	
+	public boolean checkShot(int[] shotArray){
+		boolean isHit = false;
+		for (int i=0; i<positionArray.length; i+2){
+			if (shotArray[0]==positionArray[i]){
+				if (shotArray[1]==positionArray[i+1]){
+					isHit = true;
+					hitCount++;
+					if (hitCount>=shipSize){
+						isSunk = true;
+					}
+				}
+			}
+		}
+		return isHit;
 	}
 //abstract public String sunkMsg();
 }
