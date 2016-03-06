@@ -20,6 +20,21 @@ abstract public class Ships extends Game {
 		}
 	}
 	
+	public boolean checkShot(int[] shotArray){
+ +		boolean isHit = false;
+ +		for (int i=0; i<positionArray.length; i+2){
+ +			if (shotArray[0]==positionArray[i]){
+ +				if (shotArray[1]==positionArray[i+1]){
+ +					isHit = true;
+ +					hitCount++;
+ 					checkStatus();
+ +					}
+ +				}
+ +			}
+ +		}
+ +		return isHit;
+ +	}
+ 
 	public void setPosArray(int element, int value){
 		this.positionArray[element] = value;
 	}
