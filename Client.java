@@ -14,9 +14,9 @@ public class Client {
 	/** This is just for testing. */
 //	public static void main(String[] args) {
 //		Client client = new Client();
-//		String[] shot = new String[2];
-//		shot[0]="A";
-//		shot[1]="10";
+//		int[] shot = new String[2];
+//		shot[0]=2;
+//		shot[1]=10;
 //		client.sendShot(shot);
 //		while(true){
 //			client.receiveShot();
@@ -43,27 +43,28 @@ public class Client {
 	}
 
 	/** This will send the shot to the server for routing.
-	 * @param shot	An array of Strings representing a grid location.
+	 * @param shot	An array of ints representing a grid location.
 	 */
-	public void sendShot(String[] shot){
-		for (String shotPart: shot){
-			outgoing.println(shotPart);
+	public void sendShot(int[] shot){
+		for (int shotInt: shot){
+			String shotString = Integer.toString(shotInt);
+			outgoing.println(shotString);
 			outgoing.flush();
 		}
 	}
 
 	/** This will receive a shot from the server and return 
-	 * an array of Strings representing a grid location.
+	 * an array of ints representing a grid location.
 	 */
-	public String[] receiveShot(){
-		String[] shot = new String[2];
+	public int[] receiveShot(){
+		int[] shot = new int[2];
 		boolean shotReceived = false;
 		while (shotReceived==false){
 			try {
 				if (incoming.ready()==true){
 					System.out.println("Incoming");
 					for(int i=0; i<shot.length; i++){
-						shot[i] = incoming.readLine();
+						shot[i] = Integer.parseInt(incoming.readLine());
 					}
 					shotReceived = true;
 				}
@@ -72,7 +73,7 @@ public class Client {
 			}
 		}
 		/**Just for testing */
-//		for(String shotPart: shot){
+//		for(int shotPart: shot){
 //			System.out.println("Received="+shotPart);
 //		}
 	return shot;
