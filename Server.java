@@ -49,20 +49,36 @@ public class Server {
 
 			while (player1.isClosed()!=true&&player2.isClosed()!=true){
 				if (input1.ready()){
-					String shot = input1.readLine();
-					output2.println(shot);
-					output2.flush();
+					sendAndReceive(input1, input2, output1, output2);
 				}
 				if (input2.ready()){
-					String shot = input2.readLine();
-					output1.println(shot);
-					output1.flush();
+					sendAndReceive(input2, input1, output2, output1);
 				}
 			}
 			System.out.println("Disconnected!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void sendAndReceive(BufferedReader input1, BufferedReader input2,
+			PrintWriter output1, PrintWriter output2){
+		try {
+			for (int i=0; i<2; i++){
+				output2.println(input1.readLine());
+				output2.flush();
+			}
+			boolean gotResult = false; 
+			while (!gotResult){
+				if (input2.ready()){
+					output1.println(input2.readLine());
+					output1.flush();
+					gotResult=true;
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
 	}
 }
 
