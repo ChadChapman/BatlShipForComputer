@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Player extends Game {
+	private Client client;
 	public Player() {
 
 	}
@@ -53,6 +54,7 @@ public class Player extends Game {
 		hitsMade = 0;
 		shipsSunk = 0;
 		shipsFloating = 5;
+		client = new Client();
 	}
 
 	private int getShotsTaken() {
@@ -136,7 +138,7 @@ public class Player extends Game {
 				"Player: " + Integer.toString(thisPlayer) + "***** PLAYER " + otherPlayer + " IS FIRING AT YOU!!!");
 	}
 
-	public Integer[] takeShot(int xCoord, int yCoord) {
+	public void takeShot(int xCoord, int yCoord) {
 		/*
 		 * In this method I think we could take in either the keyboard or the
 		 * GUI input as the coords for the shot a player wants to take and then
@@ -146,11 +148,12 @@ public class Player extends Game {
 		 * Here is the info to take through the Socket and relay to the other
 		 * player
 		 */
-
+		
 		Integer[] retArray = new Integer[2];
 		retArray[0] = xCoord;
 		retArray[1] = yCoord;
-		return retArray;
+		client.sendShot(retArray);
+		
 	}
 
 	public boolean checkShot(Integer[] shotArray) {
